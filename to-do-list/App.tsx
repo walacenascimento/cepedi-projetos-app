@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { FlatList, StyleSheet, View, Text, TextInput, TouchableOpacity, Alert } from 'react-native';
 import { Task } from './src/components/Task';
 import { CardNumber } from './src/components/CardNumber';
+import { InputAddTask } from './src/components/InputAddTask';
 import { useEffect, useState } from 'react';
 import {Feather} from '@expo/vector-icons';
 
@@ -35,19 +36,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.input}
-          placeholder='Digite a tarefa'
-          placeholderTextColor="white"
-          keyboardType='default'
-          onChangeText={setTaskText}
-          value={taskText}
-        />
-        <TouchableOpacity style={styles.inputButton} onPress={handleTaskAdd}>
-          <Feather name="plus-square" size={24} color="white" />
-        </TouchableOpacity>
-      </View>
+      <InputAddTask onPress={handleTaskAdd} onChangeText={setTaskText} value={taskText} />
 
       <View style={{flexDirection:'row', gap:16}}>
         <CardNumber />
