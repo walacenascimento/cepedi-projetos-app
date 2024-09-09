@@ -51,7 +51,10 @@ export default function App() {
         keyExtractor={(item, index) => index.toString()}
         renderItem={
           ({item})=>(
-            <Task />
+            <Task
+              title={item.description}
+              status={item.check}
+            />
           )
         }
         ListEmptyComponent={() => (
