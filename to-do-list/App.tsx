@@ -28,6 +28,16 @@ export default function App() {
     setTaskText(" ");
   }
 
+  function handleTaskChangeStatus(taskToChange:{description: string; check: boolean}){
+    const updatedTasks = tasks.filter((task) => task !== taskToChange);
+    const newTask = {
+      description: taskToChange.description,
+      check: !taskToChange.check,
+    }
+    updatedTasks.push(newTask);
+    setTasks(updatedTasks);
+  }
+
   useEffect(() => {
     let totalTasks = tasks.length;
     setCountTask(totalTasks);
@@ -54,6 +64,7 @@ export default function App() {
             <Task
               title={item.description}
               status={item.check}
+              onCheck={()=>handleTaskChangeStatus(item)}
             />
           )
         }

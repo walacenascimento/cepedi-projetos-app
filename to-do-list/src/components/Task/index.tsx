@@ -12,8 +12,9 @@ type Props = {
 export function Task({title, status, onCheck, onRemove}:Props) {
     return(
         <Container>
-            <TaskDone onPress={onCheck}>
-                <Feather name="square" size={24} color="white" />
+            <TaskDone onPress={onCheck} style={status ? {backgroundColor:"#0E9577"} : {}}>
+                {!status && <Feather name="square" size={24} color="white" />}
+                {status && <Feather name="check-square" size={24} color="white" />}
             </TaskDone>
             <TaskText>{title}</TaskText>
             <TaskDelete onPress={onRemove}>
