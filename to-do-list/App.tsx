@@ -38,6 +38,19 @@ export default function App() {
     setTasks(updatedTasks);
   }
 
+  function handleTaskDelete(taskToDelete : {description: string; check: boolean}) {
+    Alert.alert("Atenção!", `Deseja realmente remover a tarefa ${taskToDelete.description} ?`,
+      [
+        {text: "Sim", onPress: () => {
+            const updatedTasks = tasks.filter((task) => task != taskToDelete)
+            setTasks(updatedTasks);
+          }
+        },
+        {text: "Cancelar", style:"cancel"}
+      ]
+    )
+  }
+
   useEffect(() => {
     let totalTasks = tasks.length;
     setCountTask(totalTasks);
@@ -65,6 +78,7 @@ export default function App() {
               title={item.description}
               status={item.check}
               onCheck={()=>handleTaskChangeStatus(item)}
+              onRemove={() => handleTaskDelete(item)}
             />
           )
         }
