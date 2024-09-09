@@ -8,22 +8,22 @@ import {Feather} from '@expo/vector-icons';
 {/*Comentário */}
 export default function App() {
   // estado que irá armazenar a lista de tarefas
-  //const [tasks, setTasks] = useState<{description: string, check: boolean}[]>([]); quebra a aplicação
-  const [tasks, setTasks] = useState([]); // funciona normal
-  const [taskText, setTaskText] = useState(" "); // estado
-  const [countTask, setCountTask] = useState(0);
+
+  const [tasks, setTasks] = useState<{description: string; check: boolean}[]>([]);
+  const [taskText, setTaskText] = useState(""); // estado com terfa vazia
+  const [countTask, setCountTask] = useState(0); // Estado que irá atualizar o contador
 
   function handleTaskAdd() {
     if(taskText == " "){
       return Alert.alert("Erro:", "Essa tarefa está sem descrição.")
     }
 
-    if(tasks.some((task) => task === taskText)){
+    if(tasks.some((task)=> task.description === taskText)){
       return Alert.alert("Erro:", "Tarefa já existe!");
     }
 
-    const newTask = {taskText};
-    setTasks([...taskText, newTask]);
+    const newTask = {description: taskText, check: false};
+    setTasks([...tasks, newTask]);
     setTaskText(" ");
   }
 
@@ -86,19 +86,16 @@ const styles = StyleSheet.create({
     paddingTop: 60,
     gap: 16,
   },
-
   inputContainer:{
     flexDirection:'row',
     borderRadius: 4,
     backgroundColor: '#252627'
   },
-
   input: {
     flex: 1,
     padding: 16,
     color:'#fff'
   },
-
   inputButton: {
     backgroundColor: '#1E1E1E',
     padding: 16,
