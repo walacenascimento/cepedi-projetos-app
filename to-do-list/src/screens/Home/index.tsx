@@ -73,10 +73,11 @@ export default function Home() {
         renderItem={
           ({item})=>(
             <Task
-              title={item.description}
-              status={item.check}
-              onCheck={()=>handleTaskChangeStatus(item)}
-              onRemove={() => handleTaskDelete(item)}
+                    
+                title={item.description}
+                status={item.check}
+                onCheck={() => handleTaskChangeStatus(item)}
+                onRemove={() => handleTaskDelete(item)}
             />
           )
         }
