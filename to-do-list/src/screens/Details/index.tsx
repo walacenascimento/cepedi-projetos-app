@@ -15,22 +15,23 @@ export default function Details({route}: any){
     return(
         <Container>
             <TopContainer>
-                <TopButton>
+                <TopButton onPress={()=>navigation.popToTop()}>
                     <Feather name='chevron-left' size={24} color='white' />
                     <TopText> voltar </TopText>
                 </TopButton>
             </TopContainer>
             <TitleContainer>
-                <Title>Tarefa</Title>
+                <Title>{title}</Title>
             </TitleContainer>
             <TextStatus>Status da Tarefa:</TextStatus>
             <StatusContainer>
                 <StatusCard>
-                    <StatusIcon>
-                        <Feather name="square" size={24} color='white'/>
+                    <StatusIcon style={status ? {backgroundColor: '#0e9577'} : {}}>
+                        {!status && <Feather name="square" size={24} color="white" />}
+                        {status && <Feather name="check-square" size={24} color="white" />}
                     </StatusIcon>
                     <StatusTextContainer>
-                        <StatusText>Teste</StatusText>
+                        <StatusText>{status ? "Realizada" : "Em aberto"}</StatusText>
                     </StatusTextContainer>
                 </StatusCard>
                 <StatusButtonDel>

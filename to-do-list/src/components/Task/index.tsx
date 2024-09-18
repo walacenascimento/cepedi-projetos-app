@@ -8,14 +8,6 @@ import { useNavigation } from '@react-navigation/native';
 
 type Props = NativeStackScreenProps<RootStackParamList>;
 
-{/*  remover essas props depois
-    type Props = {
-        title: string;
-        status: boolean;
-        onCheck?: () => void;
-        onRemove?: () => void;
-    }
-*/}
 
 export function Task({id, title, status, onCheck, onRemove}:TaskProps) {
 
