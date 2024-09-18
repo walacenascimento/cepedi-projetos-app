@@ -24,7 +24,7 @@ export function Task(props: TaskProps) {
 
     return(
         <Container onPress={() => handlePress()}>
-            <TaskDone onPress={props.onCheck} style={status ? {backgroundColor:"#0E9577"} : {}}>
+            <TaskDone onPress={props.onCheck} style={props.status ? {backgroundColor:"#0E9577"} : {}}>
                 {!props.status && <Feather name="square" size={24} color="white" />}
                 {props.status && <Feather name="check-square" size={24} color="white" />}
             </TaskDone>
